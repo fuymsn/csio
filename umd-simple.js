@@ -5,7 +5,7 @@
  
 !(function (name, factory) {
     if (typeof define === "function" && define.amd) {
-        define(name, factory);
+        define([], factory);
     } else if (typeof module === "object" && module.exports) {
         module.exports = factory();
     } else {
