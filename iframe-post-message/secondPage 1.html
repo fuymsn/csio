@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script src="iframe-cross-domain.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("#backToCenter").on("click", function () {
+                XD.send($(this));
+            });
+
+        });
+    </script>
+</head>
+<body>
+    Second Page
+    <input type="button" name="sp" id="backToCenter" value="跳回原来页面" />
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <title>修改手机号码 - 个人中心</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="shortcut icon" href="" type="image/x-icon" />
+    <script type="text/javascript" src="/misc/dist/v20131021/ued.import.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        ued_import('chargePayCss', 'css');
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <div id="container">
+            <!--#include virtual="/head.html"-->
+            <!-- 搜索框开始 -->
+            <div id="top">
+                <div class="search-logo-left">
+                    <a href="/"><img src="/misc/images/logo.png" width="200" height="49" alt="海螺"></a>
+                </div>
+                <div class="search-logo-right">
+                    <p class="search-one">
+                        <span class="header-nav-line"></span>
+                        <span class="header-nav-title">修改手机号码</span>
+                    </p>
+                </div>
+            </div>
+            <!-- 搜索框结束 -->
+            <!-- 当前位置开始 -->
+            <!--<div id="position">
+                <div class="position-inner">
+                    <span>您当前位置：</span><a href="index.html">首页</a> &gt; 个人中心 &gt; 我的交易
+                </div>
+            </div>-->
+            <!-- 当前位置结束 -->
+            <div id="content" class="clearfix">
+                <!--#include virtual="../pay-info.html"-->
+                <div class="pay-form">
+                    <div class="user-info-block clearfix">
+                        <div class="info-key">
+                            <div class="top6">转账账号：</div>
+                        </div>
+                        <div class="info-value">
+                            <input type="text" placeholder="请输入收款人账号" class="txt txt-mid" />
+                        </div>
+                    </div>
+                    <div class="user-info-block clearfix">
+                        <div class="info-key">
+                            <div class="top6">充值金额：</div>
+                        </div>
+                        <div class="info-value">
+                            <span>￥</span>
+                            <input type="text" class="txt txt-mid" />
+                            <span>元</span>
+                        </div>
+                    </div>
+                    <div class="user-info-block clearfix">
+                        <div class="info-key">
+                            <div class="top6">验证码：</div>
+                        </div>
+                        <div class="info-value">
+                            <div>
+                                <input type="text" class="txt txt-short" />
+                                <img src="" />
+                                <a>换一个</a>
+                            </div>
+                            <div class="checkbox-box mt10 fl">
+                                <label for="remember-me">
+                                    <input id="agree" type="checkbox" name="remember" value="1" />
+                                    <span>我同意《嗨啰科技对账户充值的相关声明与用户协议》</span>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="user-info-block clearfix">
+                        <div class="info-key">&nbsp;</div>
+                        <div class="info-value">
+                            <input type="button" class="btn-default btn-lg btn-red" value="下一步" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--#include virtual="/foot.html"-->
+    <script type="text/javascript">
+        ued_import('chargePayJs', 'js');
+    </script>
+</body>
+</html>

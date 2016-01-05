@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script src="iframe-cross-domain.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("#backToCenter").on("click", function () {
+                XD.send($(this));
+            });
+
+        });
+    </script>
+</head>
+<body>
+    Second Page
+    <input type="button" name="sp" id="backToCenter" value="跳回原来页面" />
+</body>
+</html>

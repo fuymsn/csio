@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script src="iframe-cross-domain.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("#chargeBtn").on("click", send);
+            $("#withdrawBtn").on("click", send);
+            $("#transferBtn").on("click", send);
+
+        });
+    </script>
+</head>
+<body>
+    <div id="chargeBtn" data-href="/cas-server-webapp/pay/charge?token=b9eb2a94bbb4c16c6bcee951d5634e05">充值</div>
+    <div id="withdrawBtn" data-href="/cas-server-webapp/pay/cash?token=b9eb2a94bbb4c16c6bcee951d5634e05">提现</div>
+    <div id="transferBtn" data-href="/cas-server-webapp/pay/payment/transcreate/b9eb2a94bbb4c16c6bcee951d5634e05">转账</div>
+</body>
+</html>
