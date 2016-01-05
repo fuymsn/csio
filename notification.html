@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>notification demo</title>
+</head>
+<body>
+    <button id="notify">show notify</button>
+    <script>
+
+        //封装后
+        var Notify = function (obj) {
+
+            var obj = obj || {},
+                that = this;
+                NotifyID = obj.id || Math.random();
+
+            //Notification.permission 有三个值，default用户还未被询问是否授权，granted表示用户已经授权，denied表示用户拒绝;
+            var __getPermissionFromUser = function () {
+                if(that.isSupport && Notification.permission !== "granted"){
+                    //status 用于获取用户给出的权限
+                    Notification.requestPermission(function(status){
+                        //当页面直接load该方法时，status状态始终为denied
+                        if(Notification.permission !== status){
+                            Notification.permission = status;
+                        }
+                    });
+                }
+            };
+
+            //是否支持Notification
+            this.isSupport = !!window.Notification;
+
+            //是否允许
+            this.isPermission = function(){
+                //如果permission状态为default 或者 granted
+                if(this.isSupport && Notification.permission !== "denied"){
+                    __getPermissionFromUser();
+                    return Notification.permission;
+                }
+
+                //如果状态为denied
+                else if(this.isSupport && Notification.permission == "denied"){
+                    return "denied";
+                }
+            };
+
+            this.isNotifyAllow = function(){
+                return this.isSupport && this.isPermission() === "granted";
+            }
+
+            //创建一个Notification
+            this.create = function (obj) {
+                if (this.isNotifyAllow()) {
+
+                    //如果给消息设置相同的tag，那么消息通知只显示最新的相同tag的那一条
+                    var n = new Notification(obj.title, {
+                        body: obj.body || "",
+                        icon: obj.icon || "",
+                        tag: obj.tag || "",
+                        dir: obj.dir || "auto"
+                    });
+                    
+                    /* dir is the direction of the Notification.
+                        auto: The direction is defined automatically.
+                        ltr: The text is displayed from left to right.
+                        rtl: The text is displayed from right to left.
+                    */
+
+                    
+                        
+                    return n;
+                }
+                
+            };
+
+            //重写带参数的show方法
+            this.show = function (obj, callback) {
+                
+                var n,
+                    that = this;
+
+                if (this.isNotifyAllow()) {
+                    n = this.create(obj);
+                    //处理点击事件
+                    //点击后Notification消失
+                    n.onclick = function() {
+                        that.clickHandler(callback);
+                        //点击后Notification消失
+                        g.close()
+                    };
+
+                    n.onerror = function(){
+                        if(window.console){
+                            console.log("notification error");
+                        }
+                    }
+
+                    //显示10秒后自动消失
+                    setTimeout(function () {
+                        g.close()
+                    }, 10000)
+                }
+            };
+
+                //点击事件处理
+            this.clickHandler = function (callback) {
+                //将浏览器弹出，并显示该页
+                window.focus();
+                
+                if (callback) {
+                    callback();
+                }
+            }
+        
+        };
+
+        var no = new Notify();
+
+        var btn = document.getElementById("notify");
+
+        btn.addEventListener("click", function(){
+            //设置ID
+            no.show({
+                title: '标题',
+                icon: "http://images.cnblogs.com/cnblogs_com/flyingzl/268702/r_1.jpg",
+                body: '内容'
+            });
+        });
+
+
+    </script>
+</body>
+</html>
