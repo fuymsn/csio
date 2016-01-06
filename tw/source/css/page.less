@@ -1,0 +1,63 @@
+﻿@dark-gray: #606060;
+#head{
+    position: relative;
+    height: 100px;
+
+    .logo{
+        font-size:34px;
+        font-weight:bold;
+        float:left;
+        margin-top: 30px;
+    }
+    .user-center{
+        float: right;
+        display: block;
+        width: 250px;
+        margin-top:20px;
+        li{
+            float:right;
+            margin-left: 20px;
+        }
+        .user-center-arr{
+            background-image: url("http://localhost:51131/source/img/tw_sprite.png");
+            background-position: -39px 0px;
+            width: 18px;
+            height: 18px;
+            margin-right: 3px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+    .menu{
+        position:absolute;
+        right:0px;
+        bottom: -7px;
+        li{
+            float: right;
+            margin-left: 3px;
+            border: 3px solid #111;
+            border-radius: 15px 15px 0px 0px;
+            border-bottom: 0px;
+            position:relative;
+            a{
+                text-decoration: none;
+                padding: 8px 14px;
+                display: block;
+                text-shadow: 0px 0px 1px #999;
+            }
+            &.active{
+                bottom: 4px;
+                background-color:@dark-gray;
+                a{
+                    color:#fff;
+                    padding-top:10px;
+                    padding-bottom:10px;
+                }
+            }
+        }
+    }
+}
+
+#content{
+    border:3px solid #111;
+}

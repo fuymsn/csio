@@ -1,0 +1,308 @@
+﻿/* tag.init */
+body {
+    font: 14px "Helvetica Neue", Helvetica, Arial, Tahoma, sans-serif, serif;
+}
+/*绝对底部*/
+html,
+body,
+#wrap {
+    height: 100%;
+}
+
+    body > #wrap {
+        height: auto;
+        min-height: 100%;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+#main {
+    padding-bottom: 40px;
+}
+
+#footer {
+    position: relative;
+    margin-top: -40px;
+    /* footer高度的负值 */
+    height: 40px;
+    clear: both;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+/*定宽自适应*/
+.col-main {
+    float: left;
+    width: 100%;
+}
+
+.col-main-wrap {
+    margin: 0 300px 0 0px;
+}
+
+.col-side {
+    margin-left: -295px;
+    width: 295px;
+    *width: 254px; /*IE 7*/
+    float: left;
+    padding: 20px;
+}
+/*初始化*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0px;
+}
+
+h1 {
+    color: #000;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+a,
+button,
+input {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+a {
+    color: #000;
+}
+
+    a:hover {
+        color: #000;
+    }
+
+    a:active {
+        color: #000;
+    }
+
+    a:link {
+        color: #000;
+    }
+
+    a:visited {
+        color: #000;
+    }
+
+.transition {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.fullimg {
+    display: block;
+    width: 100%;
+}
+/*按钮*/
+.btn {
+    border: 2px solid #111;
+    background-color: #dddddd;
+    color: #111;
+    float: left;
+    margin-right: 10px;
+    border-radius: 20px;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* content top module*/
+.m-content-t {
+    background-color: #606060;
+    padding: 15px 20px;
+}
+
+    .m-content-t .title {
+        color: #fff;
+        font-size: 24px;
+        float: left;
+        margin: 0px 15px 0px 0px;
+        font-weight: normal;
+        line-height: 27px;
+    }
+
+    .m-content-t .menu {
+        float: left;
+    }
+
+        .m-content-t .menu li {
+            width: 80px;
+            background-color: #999999;
+        }
+
+            .m-content-t .menu li.active {
+                background-color: #dddddd;
+            }
+
+.m-content-o {
+    overflow: hidden;
+}
+
+    .m-content-o .m-content-i,
+    .m-content-o #side {
+        margin-bottom: -9999px;
+        padding-bottom: 9999px;
+    }
+/* content main-outside module*/
+.m-content-i {
+    border-right: 3px solid #999999;
+    padding: 15px 15px;
+    height: 100%;
+}
+/* content item module*/
+.m-item {
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    background-color: #cce8b5;
+    border: 2px solid #999999;
+    border-radius: 10px;
+    position: relative;
+}
+
+    .m-item .m-item-l {
+        display: block;
+        float: left;
+        height: 50px;
+        width: 50px;
+        border: 0px;
+        margin-right: 15px;
+    }
+
+    .m-item .m-item-main {
+        margin-left: 60px;
+        position: relative;
+    }
+
+        .m-item .m-item-main h2 {
+            width: 350px;
+            display: inline-block;
+            *display: inline; /*IE7*/
+            font-size: 20px;
+        }
+
+        .m-item .m-item-main .m-item-info {
+            display: inline-block;
+            *display: inline; /*IE7*/
+            font-size: 18px;
+            margin: 4px 0px 0px -10px;
+        }
+
+        .m-item .m-item-main .m-item-title {
+            /*margin-top: 2px;*/
+        }
+
+        .m-item .m-item-main .m-item-handle {
+            font-size: 14px;
+            margin-top: 5px;
+            position: relative;
+        }
+
+    .m-item .m-item-btn-deny {
+        position: absolute;
+        right: 20px;
+        bottom: 12px;
+    }
+
+        .m-item .m-item-btn-deny i {
+            background-image: url("../img/tw_sprite.png");
+            height: 18px;
+            width: 18px;
+            display: inline-block;
+            vertical-align: middle;
+            background-position: -19px 0;
+        }
+
+.m-item-handle-list {
+    float: left;
+    max-width:400px;
+}   
+
+    .m-item-handle-list li {
+        float: left;
+        margin: 0px 20px 5px 0px;
+    }
+
+    .m-item-handle-list .m-item-del {
+        background-image: url("../img/tw_sprite.png");
+        width: 18px;
+        height: 18px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 3px;
+        cursor: pointer;
+    }
+
+    .m-item-handle-list span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+.m-split {
+    color: #929292;
+    margin: 0px 5px;
+}
+
+.m-side {
+    padding-bottom: 25px;
+}
+
+    .m-side h2 {
+        border-bottom: 1px solid #d0d0d0;
+        padding-bottom: 6px;
+        font-size: 18px;
+    }
+
+    .m-side .m-side-list li {
+        margin: 10px 0px;
+        position:relative;
+    }
+        .m-side .m-side-list li .title{
+            width:245px;
+        }
+        .m-side .m-side-list li .num {
+            position:absolute;
+            right: 0px;
+            top: 0px;
+        }
+
+.m-panel {
+    position: absolute;
+    z-index: 5;
+    left: 79px;
+    display: none;
+    bottom: -105px;
+}
+
+    .m-panel .m-panel-tri {
+        width: 57px;
+        height: 28px;
+        display: block;
+        background-image: url("../img/tw_tri.png");
+        margin-left: 40px;
+        z-index: 10;
+        position: absolute;
+    }
+
+    .m-panel .m-panel-box {
+        padding: 10px;
+        background-color: #e0edd4;
+        border: 2px solid #553d00;
+        border-radius: 10px;
+        margin-top: 26px;
+        z-index: 8;
+    }
+
+    .m-panel .m-panel-input {
+        width: 500px;
+        margin-bottom: 5px;
+    }
