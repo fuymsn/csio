@@ -84,47 +84,51 @@ var swfobject = function() {
 		- Regular onload serves as fallback
 	*/ 
 	onDomLoad = function() {
-		if (!ua.w3) { return; }
-		if ((typeof doc.readyState != UNDEF && doc.readyState == "complete") || (typeof doc.readyState == UNDEF && (doc.getElementsByTagName("body")[0] || doc.body))) { // function is fired after onload, e.g. when script is inserted dynamically 
-			callDomLoadFunctions();
-		}
-		if (!isDomLoaded) {
-			if (typeof doc.addEventListener != UNDEF) {
-				doc.addEventListener("DOMContentLoaded", callDomLoadFunctions, false);
-			}		
-			if (ua.ie && ua.win) {
-				doc.attachEvent(ON_READY_STATE_CHANGE, function() {
-					if (doc.readyState == "complete") {
-						doc.detachEvent(ON_READY_STATE_CHANGE, arguments.callee);
-						callDomLoadFunctions();
-					}
-				});
-				if (win == top) { // if not inside an iframe
-					(function(){
-						if (isDomLoaded) { return; }
-						try {
-							doc.documentElement.doScroll("left");
-						}
-						catch(e) {
-							setTimeout(arguments.callee, 0);
-							return;
-						}
-						callDomLoadFunctions();
-					})();
-				}
-			}
-			if (ua.wk) {
-				(function(){
-					if (isDomLoaded) { return; }
-					if (!/loaded|complete/.test(doc.readyState)) {
-						setTimeout(arguments.callee, 0);
-						return;
-					}
-					callDomLoadFunctions();
-				})();
-			}
-			addLoadEvent(callDomLoadFunctions);
-		}
+
+		return (function fn(){
+      if (!ua.w3) { return; }
+      if ((typeof doc.readyState != UNDEF && doc.readyState == "complete") || (typeof doc.readyState == UNDEF && (doc.getElementsByTagName("body")[0] || doc.body))) { // function is fired after onload, e.g. when script is inserted dynamically
+        callDomLoadFunctions();
+      }
+      if (!isDomLoaded) {
+        if (typeof doc.addEventListener != UNDEF) {
+          doc.addEventListener("DOMContentLoaded", callDomLoadFunctions, false);
+        }
+        if (ua.ie && ua.win) {
+          doc.attachEvent(ON_READY_STATE_CHANGE, function() {
+            if (doc.readyState == "complete") {
+              doc.detachEvent(ON_READY_STATE_CHANGE, fn);
+              callDomLoadFunctions();
+            }
+          });
+          if (win == top) { // if not inside an iframe
+            (function(){
+              if (isDomLoaded) { return; }
+              try {
+                doc.documentElement.doScroll("left");
+              }
+              catch(e) {
+                setTimeout(fn, 0);
+                return;
+              }
+              callDomLoadFunctions();
+            })();
+          }
+        }
+        if (ua.wk) {
+          (function(){
+            if (isDomLoaded) { return; }
+            if (!/loaded|complete/.test(doc.readyState)) {
+              setTimeout(fn, 0);
+              return;
+            }
+            callDomLoadFunctions();
+          })();
+        }
+        addLoadEvent(callDomLoadFunctions);
+      }
+		})();
+
 	}();
 	
 	function callDomLoadFunctions() {
