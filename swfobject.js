@@ -206,7 +206,7 @@ var swfobject = function() {
 		var t = b.appendChild(o);
 		if (t) {
 			var counter = 0;
-			(function(){
+			(function fn(){
 				if (typeof t.GetVariable != UNDEF) {
 					var d = t.GetVariable("$version");
 					if (d) {
@@ -216,7 +216,7 @@ var swfobject = function() {
 				}
 				else if (counter < 10) {
 					counter++;
-					setTimeout(arguments.callee, 10);
+					setTimeout(fn, 10);
 					return;
 				}
 				b.removeChild(o);
